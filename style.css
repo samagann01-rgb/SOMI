@@ -1,0 +1,258 @@
+:root {
+  --fon: #f3f6fb;
+  --karanggy: #0b1f3a;
+  --kok: #1b6ef3;
+  --kok-kyzyl: #0d47b8;
+  --sary: #ffc83d;
+  --ak: #ffffff;
+  --jumshak: #566677;
+  --chek: #dfe6f0;
+  --burchtuk: 20px;
+  --chet: clamp(18px, 5vw, 32px);
+  --kolenke: 0 1px 2px rgba(11, 31, 58, 0.06), 0 14px 32px -14px rgba(11, 31, 58, 0.28);
+  --tochka: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px) 0 0 / 24px 24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: "Manrope", "Segoe UI", system-ui, Arial, sans-serif;
+  background: var(--fon);
+  color: var(--karanggy);
+  line-height: 1.6;
+  padding-bottom: 86px; /* орун: ылдыйкы баскычтар үчүн */
+  -webkit-tap-highlight-color: transparent;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--kok); outline-offset: 3px; }
+
+.ichi { max-width: 1000px; margin: 0 auto; padding-inline: var(--chet); }
+
+h1 { font-size: clamp(2rem, 9.5vw, 4rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800; margin-bottom: 16px; }
+h2 { font-size: clamp(1.5rem, 5.5vw, 2.1rem); line-height: 1.2; letter-spacing: -0.01em; font-weight: 800; margin-bottom: 20px; }
+
+/* ---------- Баш бет ---------- */
+header {
+  background: var(--tochka), var(--karanggy);
+  color: var(--ak);
+  padding: 44px 0 100px;
+}
+.jogoru { display: grid; gap: 36px; align-items: center; }
+.belgi {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 200, 61, 0.14);
+  color: var(--sary);
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+.belgi::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sary); }
+.metin p { font-size: 1.125rem; color: #c5d3e8; max-width: 34ch; margin-bottom: 28px; }
+
+.knopka {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 54px;
+  padding: 14px 28px;
+  background: var(--sary);
+  color: var(--karanggy);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.05rem;
+  border-radius: 14px;
+  box-shadow: 0 5px 0 #d9a21a;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.knopka:active { transform: translateY(4px); box-shadow: 0 1px 0 #d9a21a; }
+@media (hover: hover) {
+  .knopka:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #d9a21a; }
+}
+
+/* код терезеси */
+.kod {
+  background: #0f2747;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
+}
+.kod-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: #8fa6c6;
+}
+.kod-bar i { width: 11px; height: 11px; border-radius: 50%; background: #ff6b5e; }
+.kod-bar i:nth-child(2) { background: var(--sary); }
+.kod-bar i:nth-child(3) { background: #3ddc84; }
+.kod-bar span { margin-left: auto; }
+.kod pre {
+  padding: 18px 20px 22px;
+  font: 500 clamp(0.9rem, 3.8vw, 1.05rem) / 1.8 ui-monospace, "SF Mono", Consolas, monospace;
+  color: #e8f0ff;
+  overflow-x: auto;
+}
+.kod .t { color: #7fb2ff; }
+.kod .a { color: var(--sary); }
+.kod .s { color: #8ee6b0; }
+.kod .k { color: #6f86a6; }
+
+/* ---------- Мазмун ---------- */
+section { margin-top: 56px; }
+
+.belek {
+  margin-top: -64px;
+  background: var(--sary);
+  border-radius: var(--burchtuk);
+  padding: 22px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  align-items: center;
+  box-shadow: var(--kolenke);
+  position: relative;
+}
+.belek-belgi { grid-row: 1 / span 2; font-size: 2.6rem; line-height: 1; }
+.belek h2 { font-size: clamp(1.25rem, 5vw, 1.7rem); margin: 0 0 4px; }
+.belek p { font-weight: 600; }
+
+/* курс жөнүндө: бир панель, ичинде үч катар */
+.kartalar { background: var(--ak); border-radius: var(--burchtuk); box-shadow: var(--kolenke); overflow: hidden; }
+.karta {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  column-gap: 16px;
+  align-items: center;
+  padding: 20px 22px;
+}
+.karta + .karta { border-top: 1px solid var(--chek); }
+.chip {
+  grid-row: 1 / span 2;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #e7f0ff;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+}
+.karta h3 { font-size: 0.9rem; font-weight: 600; color: var(--jumshak); }
+.baasy { font-size: 1.4rem; line-height: 1.25; font-weight: 800; color: var(--kok-kyzyl); }
+.baasy small { font-size: 0.9rem; font-weight: 600; color: var(--jumshak); }
+
+/* эмнени үйрөнөсүз */
+.tizme { list-style: none; display: grid; border-top: 2px solid var(--karanggy); }
+.tizme li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--chek);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.tizme li::before {
+  content: "✓";
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--kok);
+  color: var(--ak);
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  transition: background 0.2s, color 0.2s;
+}
+.tizme li:active::before { background: var(--sary); color: var(--karanggy); }
+@media (hover: hover) {
+  .tizme li:hover::before { background: var(--sary); color: var(--karanggy); }
+}
+
+/* кимдер үчүн */
+.kimder { border-left: 6px solid var(--sary); padding: 4px 0 4px 20px; }
+.kimder p { font-size: clamp(1.2rem, 4.6vw, 1.6rem); font-weight: 700; line-height: 1.4; max-width: 30ch; }
+
+/* байланыш */
+.baylanysh {
+  background: var(--tochka), var(--karanggy);
+  color: var(--ak);
+  border-radius: var(--burchtuk);
+  padding: 36px 22px;
+  text-align: center;
+  box-shadow: var(--kolenke);
+}
+.baylanysh h2 { margin-bottom: 4px; }
+.nomer {
+  display: block;
+  font-size: clamp(1.9rem, 9vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--sary);
+  text-decoration: none;
+  margin: 10px 0 22px;
+}
+.baylanysh .knopka { width: 100%; max-width: 360px; }
+
+footer { text-align: center; padding: 28px var(--chet); color: var(--jumshak); font-size: 0.9rem; }
+
+/* ---------- Телефондун ылдыйкы баскычтары ---------- */
+.asty {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+  padding: 10px var(--chet) calc(10px + env(safe-area-inset-bottom, 0px));
+  background: rgba(11, 31, 58, 0.94);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.asty a {
+  flex: 1;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.asty .chalu { border: 2px solid rgba(255, 255, 255, 0.35); color: var(--ak); }
+.asty .jaz { background: var(--sary); color: var(--karanggy); }
+
+/* ---------- Чоң экрандар ---------- */
+@media (max-width: 600px) {
+  .metin .knopka { width: 100%; }
+}
+@media (min-width: 861px) {
+  body { padding-bottom: 0; }
+  .asty { display: none; }
+  header { padding: 80px 0 130px; }
+  .jogoru { grid-template-columns: 1.1fr 0.9fr; gap: 56px; }
+  .belek { margin-top: -80px; padding: 28px 32px; }
+  .kartalar { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .karta + .karta { border-top: 0; border-left: 1px solid var(--chek); }
+  .tizme { grid-template-columns: 1fr 1fr; column-gap: 48px; }
+  .baylanysh { padding: 56px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
